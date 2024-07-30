@@ -18,6 +18,27 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    phoneNo: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    enrollmentNo: {
+      type: String,
+      required: true,
+    },
+    hostel: {
+      type: String,
+      required: true,
+    },
+    branch: {
+      type: String,
+      required: true,
+    },
+    year: {
+      type: String,
+      required: true,
+    },
     salt: {
       type: String,
     },

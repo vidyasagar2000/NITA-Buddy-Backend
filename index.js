@@ -6,11 +6,13 @@ const cors = require("cors");
 const port = process.env.PORT || 3000;
 
 const userRoute = require("./routes/user");
+const parcelRouter = require("./routes/parcel");
 const {
   checkForAuthenticationCookie,
 } = require("./middlewares/authentication");
 
-const dataBaseUrl = process.env.DATABASE_URL || "mongodb://127.0.0.1:27017/maplybackend";
+const dataBaseUrl =
+  process.env.DATABASE_URL || "mongodb://127.0.0.1:27017/NITABuddy";
 connectToMongoDB(dataBaseUrl);
 
 const app = express();
@@ -25,5 +27,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user", userRoute);
+app.use("/parcel", parcelRouter);
 
 app.listen(port, () => console.log(`Server is running on PORT: ${port}`));
