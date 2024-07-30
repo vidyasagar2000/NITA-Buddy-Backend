@@ -9,16 +9,15 @@ function checkForAuthenticationCookie(cookieName) {
     }
     try {
       const userPayload = validateToken(tokenCookieValue);
-      req.user = userPayload;
+      req.user = userPayload._doc;
     } catch (error) {}
     return next();
   };
 }
 
-function restrictTo(roles = []) {
+function restrictTo(roles) {
   return function (req, res, next) {
     if (!req.user) return res.end("Please Login First");
-
     if (!roles.includes(req.user.role)) {
       return res.end("UnAuthorized");
     }

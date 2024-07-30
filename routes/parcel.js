@@ -4,16 +4,14 @@ const ParcelRequest = require("../models/ParcelRequest");
 const authMiddleware = require("../middlewares/auth");
 
 // router.post("/parcel-request", authMiddleware, async (req, res) => {
-router.post("/parcel-request", authMiddleware, async (req, res) => {
+router.post("/parcel-request", async (req, res) => {
+  console.log(req.body);
   try {
-    const { pickupLocation, parcelDescription, status } = req.body;
-
+    const { parcelDescription } = req.body;
     const parcelRequest = await ParcelRequest.create({
-    //   requesterId: req.user.id,
-      pickupLocation,
-    //   deliveryLocation: req.user.hostel,
+      requesterId: req.user.Dateid,
+      deliveryLocation: req.user.hostel,
       parcelDescription,
-      status,
     });
     console.log("Making Parcel");
     res.status(201).json(parcelRequest);

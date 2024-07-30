@@ -2,17 +2,17 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const parcelRequestSchema = new Schema({
-  // requesterId: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: "User",
-  //   required: true,
-  // },
-  // delivererId: {
-  //   //  Assigned when accepted
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: "User",
-  //   default: null,
-  // },
+  requesterId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
+  delivererId: {
+    //  Assigned when accepted
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    default: null,
+  },
   parcelCompany: {
     type: String,
     required: true,

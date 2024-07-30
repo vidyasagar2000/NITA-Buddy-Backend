@@ -28,7 +28,6 @@ router.route("/signup").post(async (req, res) => {
     password,
     phoneNo,
     enrollmentNo,
-    imageURL,
     hostel,
     branch,
     year,
@@ -76,7 +75,5 @@ router
       res.status(500).json({ message: "Server error" });
     }
   });
-
-module.exports = router;
 
 module.exports = router;

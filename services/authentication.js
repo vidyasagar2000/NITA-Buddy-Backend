@@ -4,12 +4,8 @@ require("dotenv").config();
 const secretKey = process.env.SECRET_KEY || "vidya@sagar";
 
 function createTokenForUser(user) {
-  const payload = {
-    _id: user._id,
-    email: user.email,
-    imageURL: user.imageURL,
-    role: user.role,
-  };
+  user.password = null;
+  const payload = { ...user };
 
   const token = JWT.sign(payload, secretKey);
   return token;

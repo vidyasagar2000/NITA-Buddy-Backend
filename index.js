@@ -9,6 +9,7 @@ const userRoute = require("./routes/user");
 const parcelRouter = require("./routes/parcel");
 const {
   checkForAuthenticationCookie,
+  restrictTo,
 } = require("./middlewares/authentication");
 
 const dataBaseUrl =
@@ -27,6 +28,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user", userRoute);
-app.use("/parcel", parcelRouter);
+app.use("/parcel", restrictTo(["USER"]), parcelRouter);
 
 app.listen(port, () => console.log(`Server is running on PORT: ${port}`));
