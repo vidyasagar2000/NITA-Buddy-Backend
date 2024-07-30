@@ -7,6 +7,10 @@ const parcelRequestSchema = new Schema({
     ref: "User",
     required: true,
   },
+  requesterPhoneNo: {
+    type: String,
+    required: true,
+  },
   delivererId: {
     //  Assigned when accepted
     type: mongoose.Schema.Types.ObjectId,

@@ -5,15 +5,14 @@ const authMiddleware = require("../middlewares/auth");
 
 // router.post("/parcel-request", authMiddleware, async (req, res) => {
 router.post("/parcel-request", async (req, res) => {
-  console.log(req.body);
   try {
     const { parcelDescription } = req.body;
     const parcelRequest = await ParcelRequest.create({
-      requesterId: req.user.Dateid,
+      requesterId: req.user._id,
       deliveryLocation: req.user.hostel,
+      requesterPhoneNo: req.user.phoneNo,
       parcelDescription,
     });
-    console.log("Making Parcel");
     res.status(201).json(parcelRequest);
   } catch (error) {
     res.status(500).json({ message: "Server error" });
