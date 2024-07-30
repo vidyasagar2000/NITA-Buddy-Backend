@@ -38,7 +38,7 @@ const parcelRequestSchema = new Schema({
   },
   status: {
     type: String,
-    enum: ["requested", "accepted", "in_transit", "delivered", "cancelled"],
+    enum: ["requested", "accepted", "delivered", "cancelled"],
     default: "requested",
   },
   createdAt: {
